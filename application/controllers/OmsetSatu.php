@@ -49,7 +49,6 @@ class OmsetSatu extends CI_Controller
                 'jumlah_kembalian' => $this->input->post('kembalian'),
                 'tanggal_stor' => date('Y-m-d'),
                 'bulan' => date('mY'),
-                'tahun' => date('Y'),
                 'waktu_stor' => time()
             ];
             $this->db->insert('omset', $data);

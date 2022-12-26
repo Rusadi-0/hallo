@@ -57,6 +57,11 @@ class OmsetDua extends CI_Controller
         $data['title'] = 'Data ';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
+        $this->load->model('Omset_model', 'omset');
+        
+        $data['getAll'] = $this->omset->getAll('omset');
+        $data['getAss'] = $this->omset->getAss('omset');
+
         // $data['user_sub_menu'] = $this->db->get_where('user_sub_menu')->row_array();
         $this->load->model('OmsetDua_model', 'omsetD');
         

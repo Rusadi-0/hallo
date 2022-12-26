@@ -24,7 +24,7 @@
         <?php date_default_timezone_set("Asia/Kuala_Lumpur"); ?>
 
         <div class="row">
-            <div class="col-md-4 col-lg-4 col-xl-4">
+            <div class="col-md-6 col-lg-6 col-xl-6">
                 <div class="card m-b-30">
                     <h5 class="card-header mt-0"><i class="mdi mdi-format-line-spacing"></i> Penyetoran Hari Ini</h5>
                     <div class="card-body">
@@ -161,26 +161,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-2 col-lg-2 col-xl-2">
-                <div class="card m-b-30">
-                    <h5 class="card-header mt-0"><i class="mdi mdi-format-line-spacing"></i> Laba Bulan ini</h5>
-                    <div class="card-body text-center">
-                        <script>
-                            let gugu = <?php foreach ($getAll as $gg) {
-                                            echo $gg;
-                                        } ?>;//variabel gugu adalah untuk mrnampilkan semua data nilai_omset bulan sekarang
-                            let gigi = <?php foreach ($getAss as $ss) {
-                                            echo $ss * 250000;
-                                        } ?>;//variabel gigi adalah untuk menampilkan semuada data jumlah_kembalian bulan sekarang
-                            let huhu = gugu - gigi; //variabel huhu adalah nilai dari SUM data nilai_omset dikurang SUM data jumlah_kembalian
-                            let bbbb = huhu * 9.0909090909090909090909090901 / 100;
-                            let hihi = huhu - bbbb;
-                            document.writeln('<h5 class="card-title">Laba Modal</h5><h3><strong>Rp ' + new Intl.NumberFormat().format(Math.round(hihi)) + '</strong></h3><br>');
-                            document.writeln('<h5 class="card-title">Laba Bersih</h5><h3><strong>Rp ' + new Intl.NumberFormat().format(Math.round(bbbb)) + '</strong></h3>');
-                        </script>
-                    </div>
-                </div>
-            </div>
             <div class="col-md-6 col-lg-6 col-xl-6">
                 <div class="card m-b-30">
                     <h5 class="card-header mt-0"><i class="mdi mdi-format-line-spacing"></i> Omset Bulan <?= date("F"); ?></h5>
@@ -205,11 +185,15 @@
                                     <?php $hasilOmset = ($om['nilai_omset'] - ($om['jumlah_kembalian'] * 250000)) - $hasilPersen; ?>
                                     <tr>
                                         <td scope="row"><?= strftime("%d", strtotime($om['tanggal_stor'])); ?></td>
-                                        <td><?php if ($hasilPersen < 0) {
+                                        <td><?php 
+                                        $hoss = $hasilPersen / 1000;
+                                        $hosa = round($hoss);
+                                        if ($hasilPersen < 0) {
                                                 echo 0;
                                             } else {
-                                                echo number_format($hasilPersen, 0, '', ',');
-                                            }; ?></td>
+                                                echo number_format(($hosa*1000), 0, '', ',');
+                                            }; ?>
+                                        </td>                                        
                                         <td>
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#lihat<?= $om['id']; ?>">
                                                 <i class="mdi mdi-eye"></i>
