@@ -5,7 +5,7 @@ class Omset_model extends CI_Model
 {
     public function getData()//untuk validasi input omset sekarang
     {
-        $query = "SELECT tanggal_stor FROM omset ORDER BY waktu_stor DESC;";
+        $query = "SELECT tanggal_stor FROM omset ORDER BY tanggal_stor DESC;";
         return $this->db->query($query)->row_array();
     }
     

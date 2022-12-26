@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+date_default_timezone_set('Asia/Kuala_Lumpur');
+
 class OmsetDua extends CI_Controller
 {
     public function __construct()
@@ -111,7 +113,8 @@ class OmsetDua extends CI_Controller
                 'tanggal_stor' => date('Y-m-d'),
                 'bulan' => date('mY'),
                 'tahun' => date('Y'),
-                'waktu_stor' => time()
+                'waktu_stor' => time(),
+                'keterangan' => $this->input->post('keterangan')
             ];
             $this->db->insert('omset', $data);
             $this->db->set('bulan', (date("m") + 1) . date("Y"));

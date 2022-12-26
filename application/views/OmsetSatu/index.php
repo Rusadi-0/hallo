@@ -25,139 +25,161 @@
 
         <div class="row">
             <div class="col-md-6 col-lg-6 col-xl-6">
-                <div class="card m-b-30">
-                    <h5 class="card-header mt-0"><i class="mdi mdi-format-line-spacing"></i> Penyetoran Hari Ini</h5>
-                    <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 col-xl-12">
+                        <div class="card m-b-30">
+                            <h5 class="card-header mt-0"><i class="mdi mdi-format-line-spacing"></i> Penyetoran Hari Ini</h5>
+                            <div class="card-body">
 
-                        <script>
-                            if (<?php foreach ($omset as $o) {
-                                    echo $o;
-                                } ?> != <?= date('Y-m-d'); ?>) {
-                                if (<?= date("Hi"); ?> > 2144) {
-                                    document.writeln( /*html*/ `
-                        <form action="<?= base_url('OmsetSatu/omset'); ?>" method="post">
-                            <div class="form-group row">
-                                <label for="1k" class="col-sm-4 col-form-label"><strong>Rp. 1.000 ,-</strong> <i style="color:#acb861;font-size:19px;" class="mdi mdi-cash-usd"></i></label>
-                                <div class="col-sm-8">
-                                    <input type="number" min="0" id="" name="1k" placeholder=". . . " required class="form-control" id="inputEmail3">
-                                </div>
-                            </div>                            
-                            <div class="form-group row">
-                                <label for="2k" class="col-sm-4 col-form-label"><strong>Rp. 2.000 ,-</strong> <i style="color:#929ba6;font-size:19px;" class="mdi mdi-cash-usd"></i></label>
-                                <div class="col-sm-8">
-                                    <input type="number" min="0" id="" name="2k" placeholder=". . . " required class="form-control" id="inputEmail3">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="5k" class="col-sm-4 col-form-label"><strong>Rp. 5.000 ,-</strong> <i style="color:#9c6d17;font-size:19px;" class="mdi mdi-cash-usd"></i></label>
-                                <div class="col-sm-8">
-                                    <input type="number" min="0" id="" name="5k" placeholder=". . . " required class="form-control" id="inputEmail3">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="10k" class="col-sm-4 col-form-label"><strong>Rp. 10.000 ,-</strong> <i style="color:#d154a7;font-size:19px;" class="mdi mdi-cash-usd"></i></label>
-                                <div class="col-sm-8">
-                                    <input type="number" min="0" id="" name="10k" placeholder=". . . " required class="form-control" id="inputEmail3">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="20k" class="col-sm-4 col-form-label"><strong>Rp. 20.000 ,-</strong> <i style="color:#4bc477;font-size:19px;" class="mdi mdi-cash-usd"></i></label>
-                                <div class="col-sm-8">
-                                    <input type="number" min="0" id="" name="20k" placeholder=". . . " required class="form-control" id="inputEmail3">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="50k" class="col-sm-4 col-form-label"><strong>Rp. 50.000 ,-</strong> <i style="color:#52abff;font-size:19px;" class="mdi mdi-cash-usd"></i></label>
-                                <div class="col-sm-8">
-                                    <input type="number" min="0" id="" name="50k" placeholder=". . . " required class="form-control" id="inputEmail3">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="100k" class="col-sm-4 col-form-label"><strong>Rp. 100.000 ,-</strong> <i style="color:#fc5c2b;font-size:19px;" class="mdi mdi-cash-usd"></i></label>
-                                <div class="col-sm-8">
-                                    <input type="number" min="0" id="" name="100k" placeholder=". . . " required class="form-control" id="inputEmail3">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label"><strong>Jumlah Kembalian diambil</strong></label>
-                                <div class="col-sm-8">
-                                    <div class="">
-                                        <input onclick="angsulan(1)" required placeholder="1" id="tum1" class="col-2 btn btn-outline-primary">
-                                        <input onclick="angsulan(2)" required placeholder="2" id="tum2" class="col-2 btn btn-outline-primary">
-                                        <input onclick="angsulan(3)" required placeholder="3" id="tum3" class="col-2 btn btn-outline-primary">
-                                        <input name="nama_penyetor" type="hidden" value="<?= $user["name"]; ?>">
+                                <script>
+                                    if (<?php foreach ($omset as $o) {echo $o;}?> != <?= date('Y-m-d'); ?>) {
+                                        if (<?= date("Hi"); ?> > 0126) {
+                                            document.writeln( /*html*/ `
+                                <form action="<?= base_url('OmsetSatu/omset'); ?>" method="post">
+                                    <div class="form-group row">
+                                        <label for="1k" class="col-sm-4 col-form-label"><strong>Rp. 1.000 ,-</strong> <i style="color:#acb861;font-size:19px;" class="mdi mdi-cash-usd"></i></label>
+                                        <div class="col-sm-8">
+                                            <input type="number" min="0" id="" name="1k" placeholder=". . . " required class="form-control" id="inputEmail3">
+                                        </div>
+                                    </div>                            
+                                    <div class="form-group row">
+                                        <label for="2k" class="col-sm-4 col-form-label"><strong>Rp. 2.000 ,-</strong> <i style="color:#929ba6;font-size:19px;" class="mdi mdi-cash-usd"></i></label>
+                                        <div class="col-sm-8">
+                                            <input type="number" min="0" id="" name="2k" placeholder=". . . " required class="form-control" id="inputEmail3">
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="form-group row mt-5">
-                                <div class="col-sm-12">
-                                <div id="jahh">
-                                    <button type="submit" id="jah" onclick="oh()" class="btn btn-block btn-primary mt-2" class="btn btn-primary mt-2"><i class='mdi mdi-content-save'></i> Simpan</button>
+                                    <div class="form-group row">
+                                        <label for="5k" class="col-sm-4 col-form-label"><strong>Rp. 5.000 ,-</strong> <i style="color:#9c6d17;font-size:19px;" class="mdi mdi-cash-usd"></i></label>
+                                        <div class="col-sm-8">
+                                            <input type="number" min="0" id="" name="5k" placeholder=". . . " required class="form-control" id="inputEmail3">
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
+                                    <div class="form-group row">
+                                        <label for="10k" class="col-sm-4 col-form-label"><strong>Rp. 10.000 ,-</strong> <i style="color:#d154a7;font-size:19px;" class="mdi mdi-cash-usd"></i></label>
+                                        <div class="col-sm-8">
+                                            <input type="number" min="0" id="" name="10k" placeholder=". . . " required class="form-control" id="inputEmail3">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="20k" class="col-sm-4 col-form-label"><strong>Rp. 20.000 ,-</strong> <i style="color:#4bc477;font-size:19px;" class="mdi mdi-cash-usd"></i></label>
+                                        <div class="col-sm-8">
+                                            <input type="number" min="0" id="" name="20k" placeholder=". . . " required class="form-control" id="inputEmail3">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="50k" class="col-sm-4 col-form-label"><strong>Rp. 50.000 ,-</strong> <i style="color:#52abff;font-size:19px;" class="mdi mdi-cash-usd"></i></label>
+                                        <div class="col-sm-8">
+                                            <input type="number" min="0" id="" name="50k" placeholder=". . . " required class="form-control" id="inputEmail3">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="100k" class="col-sm-4 col-form-label"><strong>Rp. 100.000 ,-</strong> <i style="color:#fc5c2b;font-size:19px;" class="mdi mdi-cash-usd"></i></label>
+                                        <div class="col-sm-8">
+                                            <input type="number" min="0" id="" name="100k" placeholder=". . . " required class="form-control" id="inputEmail3">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-4 col-form-label"><strong>Jumlah Kembalian diambil</strong></label>
+                                        <div class="col-sm-8">
+                                            <div class="">
+                                                <input onclick="angsulan(1)" required placeholder="1" id="tum1" class="col-2 btn btn-outline-primary">
+                                                <input onclick="angsulan(2)" required placeholder="2" id="tum2" class="col-2 btn btn-outline-primary">
+                                                <input onclick="angsulan(3)" required placeholder="3" id="tum3" class="col-2 btn btn-outline-primary">
+                                                <input name="nama_penyetor" type="hidden" value="<?= $user["name"]; ?>">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row mt-5">
+                                        <div class="col-sm-12">
+                                        <div id="jahh">
+                                            <button type="submit" id="jah" onclick="oh()" class="btn btn-block btn-primary mt-2" class="btn btn-primary mt-2"><i class='mdi mdi-content-save'></i> Simpan</button>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                        </form>`)
-                                } else {
-                                    document.writeln("<div class='text-center'><h5>Waktu Penyetoran dimulai</h5><h5><strong>Jam 09.45 PM s/d 12.00 AM</strong></h5><div id='f5ff'><botton onclick='f5()' class='btn btn-primary'>Refresh</button></div></div>");
+                                </form>`)
+                                        } else {
+                                            document.writeln("<div class='text-center'><h5>Waktu Penyetoran dimulai</h5><h5><strong>Jam 09.45 PM s/d 12.00 AM</strong></h5><div id='f5ff'><botton onclick='f5()' class='btn btn-primary'>Refresh</button></div></div>");
 
-                                    function f5() {
-                                        window.location.reload();
-                                        document.getElementById("f5ff").innerHTML = "<botton class='btn btn-primary disabled'><i class='fa fa-spin fa-spinner'></i> Refresh</button>"
-                                    };
-                                };
-                            } else {
-                                <?php foreach ($getAkhir as $om) : ?>
-                                    document.writeln(`
-  <div class="container">
-    <div class="text-center">
-      <h2>Berhasil Direkam</h2>
-    <h1 style="font-size:150px;color:rgb(0, 186, 77);" class="mdi mdi-checkbox-marked-circle-outline animate__animated animate__bounceIn animate__delay-1s"></h1>
-      <br>
-      <br>
-      <br>
-        <div class="row">
-          <div class="col-md-6"><h6>Penyetor Hari ini :</h6></div>
-          <div class="col-md-6"><strong><h5><?= $om["nama_penyetor"]; ?></h5></strong></div>
-        </div>
-        <div class="row">
-          <div class="col-md-6"><h6>Laba Pendapatan Hari ini :</h6></div>
-          <div class="col-md-6"><strong><h5><?= "Rp. " . number_format($om['nilai_omset'], 0, '', ','); ?></h5></strong></div>
-        </div>
-        <div class="row">
-          <div class="col-md-6"><h6>Waktu Disetor :</h6></div>
-          <div class="col-md-6"><strong><h5><?= date("g:i A", $om['waktu_stor']); ?></h5></strong></div>
-        </div> 
-    </div>
-  </div>
-                        `);
-                                <?php endforeach; ?>
-                            }
-                            setTimeout(function() {
-                                window.location.reload(1);
-                            }, <?php
-                                $j = 21;
-                                $m = 30;
-                                $d = 00;
-
-
-                                $jam = ($j * (60 * 60 * 1000)) - (date("H") * (60 * 60 * 1000));
-                                $menit = ($m * (60 * 1000)) - (date("i") * (60 * 1000));
-                                $detik = ($d * 1000) - (date("s") * 1000);
-
-                                $waktu = $jam + $menit + $detik;
-
-                                ?><?php
-
-                                    if ($waktu > 0) {
-                                        echo $waktu;
+                                            function f5() {
+                                                window.location.reload();
+                                                document.getElementById("f5ff").innerHTML = "<botton class='btn btn-primary disabled'><i class='fa fa-spin fa-spinner'></i> Refresh</button>"
+                                            };
+                                        };
                                     } else {
-                                        echo (1000 * 60 * 60 * 24) * 3;
+                                        <?php foreach ($getAkhir as $om) : ?>
+                                            document.writeln(/*html*/`
+                                                <div class="container">
+                                                    <div class="text-center">
+                                                    <h2>Berhasil Direkam</h2>
+                                                    <h1 style="font-size:150px;color:rgb(0, 186, 77);" class="mdi mdi-checkbox-marked-circle-outline animate__animated animate__bounceIn animate__delay-1s"></h1>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                        <div class="row">
+                                                        <div class="col-md-6"><h6>Penyetor Hari ini :</h6></div>
+                                                        <div class="col-md-6"><strong><h5><?= $om["nama_penyetor"]; ?></h5></strong></div>
+                                                        </div>
+                                                        <div class="row">
+                                                        <div class="col-md-6"><h6>Laba Pendapatan Hari ini :</h6></div>
+                                                        <div class="col-md-6"><strong><h5><?= "Rp. " . number_format($om['nilai_omset'], 0, '', ','); ?></h5></strong></div>
+                                                        </div>
+                                                        <div class="row">
+                                                        <div class="col-md-6"><h6>Waktu Disetor :</h6></div>
+                                                        <div class="col-md-6"><strong><h5><?= date("g:i A", $om['waktu_stor']); ?></h5></strong></div>
+                                                        </div> 
+                                                    </div>
+                                                </div>
+                                `);
+                                        <?php endforeach; ?>
                                     }
+                                    setTimeout(function() {
+                                        window.location.reload(1);
+                                    }, <?php
+                                        $j = 21;
+                                        $m = 30;
+                                        $d = 00;
 
 
-                                    ?>);
-                        </script>
+                                        $jam = ($j * (60 * 60 * 1000)) - (date("H") * (60 * 60 * 1000));
+                                        $menit = ($m * (60 * 1000)) - (date("i") * (60 * 1000));
+                                        $detik = ($d * 1000) - (date("s") * 1000);
+
+                                        $waktu = $jam + $menit + $detik;
+
+                                        ?><?php
+
+                                            if ($waktu > 0) {
+                                                echo $waktu;
+                                            } else {
+                                                echo (1000 * 60 * 60 * 24) * 3;
+                                            }
+
+
+                                            ?>);
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-12 col-xl-12">
+                        <div class="card m-b-30">
+                            <h5 class="card-header mt-0"><i class="mdi mdi-format-line-spacing"></i> Laba Bulan ini</h5>
+                            <div class="card-body text-center">
+                                <script>
+                                    let gugu = <?php foreach ($getAll as $gg) {
+                                                    echo $gg;
+                                                } ?>;//variabel gugu adalah untuk mrnampilkan semua data nilai_omset bulan sekarang
+                                    let gigi = <?php foreach ($getAss as $ss) {
+                                                    echo $ss * 250000;
+                                                } ?>;//variabel gigi adalah untuk menampilkan semuada data jumlah_kembalian bulan sekarang
+                                    let huhu = gugu - gigi; //variabel huhu adalah nilai dari SUM data nilai_omset dikurang SUM data jumlah_kembalian
+                                    let bbbb = huhu * 9.0909090909090909090909090901 / 100;
+                                    let hihi = huhu - bbbb;
+                                    document.writeln('<h5 class="card-title">Laba Modal</h5><h3><strong>Rp ' + new Intl.NumberFormat().format(Math.round(hihi)) + '</strong></h3><br>');
+                                    document.writeln('<h5 class="card-title">Laba Bersih</h5><h3><strong>Rp ' + new Intl.NumberFormat().format(Math.round(bbbb)) + '</strong></h3>');
+                                </script>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -193,7 +215,7 @@
                                             } else {
                                                 echo number_format(($hosa*1000), 0, '', ',');
                                             }; ?>
-                                        </td>                                        
+                                        </td>  
                                         <td>
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#lihat<?= $om['id']; ?>">
                                                 <i class="mdi mdi-eye"></i>

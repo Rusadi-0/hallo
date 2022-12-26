@@ -1,3 +1,23 @@
+<script>
+// START LABA BULAN INI
+    let gugu = <?php foreach ($getAll as $gg) {
+                    echo $gg;
+                } ?>;//variabel gugu adalah untuk mrnampilkan semua data nilai_omset bulan sekarang
+    let gigi = <?php foreach ($getAss as $ss) {
+                    echo $ss * 250000;
+                } ?>;//variabel gigi adalah untuk menampilkan semuada data jumlah_kembalian bulan sekarang
+    let huhu = gugu - gigi; //variabel huhu adalah nilai dari SUM data nilai_omset dikurang SUM data jumlah_kembalian
+    let bbbb = huhu * 9.0909090909090909090909090901 / 100;
+    let hihi = huhu - bbbb;
+// END LABA BULAN INI
+
+
+// START UPAH 20%
+    let cca = Math.ceil((bbbb * 20) / 100);
+    let ccb = cca / 1000;
+    let ccc = Math.round(ccb)*1000;
+// END UPAH 20%
+</script>
 </header>
 <!-- End Navigation Bar=============================================================================-->
 
@@ -24,56 +44,43 @@
         <?php date_default_timezone_set("Asia/Kuala_Lumpur"); ?>
 
         <div class="row">
-                        <div class="ol-md-4 col-lg-4 col-xl-4">
-                            <div class="row">
-                            <div class="col-md-12 col-lg-12 col-xl-12">
-                                <div class="card m-b-30">
-                                    <h5 class="card-header mt-0"><i class="mdi mdi-format-line-spacing"></i> Omset Tahun <?= date("Y"); ?></h5>
-                                    <div class="card-body">
-                    <h4 class="mt-0 header-title">Stacked bar chart</h4>
-                                <p class="text-muted m-b-30 font-14 d-inline-block text-truncate w-100">You can also set your bar chart to
-                                    stack the series bars on top of each other easily by using the stackBars
-                                    property in your configuration.</p>
-                                    
+            <div class="col-md-4 col-lg-4 col-xl-4">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 col-xl-12">
+                        <div class="card m-b-30">
+                            <h5 class="card-header mt-0"><i class="mdi mdi-format-line-spacing"></i> Omset Tahun <?= date("Y"); ?></h5>
+                            <div class="card-body">
+                                <h4 class="mt-0 header-title">Stacked bar chart</h4>
+                                    <p class="text-muted m-b-30 font-14 d-inline-block text-truncate w-100">You can also set your bar chart to
+                                        stack the series bars on top of each other easily by using the stackBars
+                                        property in your configuration.</p>
                                 <div id="stacked-bar-chart" class="ct-chart ct-golden-section"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-12 col-xl-12">
+                        <div class="card m-b-30">
+                            <h5 class="card-header mt-0"><i class="mdi mdi-format-line-spacing"></i> Laba Bulan ini</h5>
+                            <div class="card-body text-center">
+                                <script>
+                                    document.writeln('<h5 class="card-title">Laba Modal</h5><h3><strong>Rp ' + new Intl.NumberFormat().format(Math.round(hihi)) + '</strong></h3><br>');
+                                    document.writeln('<h5 class="card-title">Laba Bersih</h5><h3><strong>Rp ' + new Intl.NumberFormat().format(Math.round(bbbb)) + '</strong></h3>');
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-12 col-xl-12">
+                        <div class="card m-b-30">
+                            <h5 class="card-header mt-0"><i class="mdi mdi-weather-rainy"></i> Upah Kasir 20% per bulan</h5>
+                            <div class="card-body text-center">
+                                <script>
+                                    document.writeln('<h5 class="card-title">Total hasil dibulatkan : </h5><h3><strong data-toggle="tooltip" data-placement="left" title="" data-original-title="'+ new Intl.NumberFormat().format(cca) +'">Rp ' + new Intl.NumberFormat().format(ccc) + '</strong></h3>');
+                                </script>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 col-lg-12 col-xl-12">
-                <div class="card m-b-30">
-                    <h5 class="card-header mt-0"><i class="mdi mdi-format-line-spacing"></i> Laba Bulan ini</h5>
-                    <div class="card-body text-center">
-                        <script>
-                            let gugu = <?php foreach ($getAll as $gg) {
-                                            echo $gg;
-                                        } ?>;//variabel gugu adalah untuk mrnampilkan semua data nilai_omset bulan sekarang
-                            let gigi = <?php foreach ($getAss as $ss) {
-                                            echo $ss * 250000;
-                                        } ?>;//variabel gigi adalah untuk menampilkan semuada data jumlah_kembalian bulan sekarang
-                            let huhu = gugu - gigi; //variabel huhu adalah nilai dari SUM data nilai_omset dikurang SUM data jumlah_kembalian
-                            let bbbb = huhu * 9.0909090909090909090909090901 / 100;
-                            let hihi = huhu - bbbb;
-                            document.writeln('<h5 class="card-title">Laba Modal</h5><h3><strong>Rp ' + new Intl.NumberFormat().format(Math.round(hihi)) + '</strong></h3><br>');
-                            document.writeln('<h5 class="card-title">Laba Bersih</h5><h3><strong>Rp ' + new Intl.NumberFormat().format(Math.round(bbbb)) + '</strong></h3>');
-                        </script>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12 col-lg-12 col-xl-12">
-                <div class="card m-b-30">
-                    <h5 class="card-header mt-0"><i class="mdi mdi-weather-rainy"></i> Upah Kasir 20% per bulan</h5>
-                    <div class="card-body text-center">
-                        <script>
-                            let cca = Math.ceil((bbbb * 20) / 100);
-                            let ccb = cca / 1000;
-                            let ccc = Math.round(ccb)*1000;
-                            document.writeln('<h5 class="card-title">Total hasil dibulatkan : </h5><h3><strong data-toggle="tooltip" data-placement="left" title="" data-original-title="'+ new Intl.NumberFormat().format(cca) +'">Rp ' + new Intl.NumberFormat().format(ccc) + '</strong></h3>');
-                        </script>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
             <div class="col-md-8 col-lg-8 col-xl-8">
                 <div class="card m-b-30">
                     <h5 class="card-header mt-0"><i class="mdi mdi-format-line-spacing"></i> Omset Tahun <?= date("Y"); ?></h5>
