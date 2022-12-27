@@ -1,3 +1,23 @@
+<script>
+// START LABA BULAN INI
+    let gugu = <?php foreach ($getAll as $gg) {
+                    echo $gg;
+                } ?>;//variabel gugu adalah untuk mrnampilkan semua data nilai_omset bulan sekarang
+    let gigi = <?php foreach ($getAss as $ss) {
+                    echo $ss * 250000;
+                } ?>;//variabel gigi adalah untuk menampilkan semuada data jumlah_kembalian bulan sekarang
+    let huhu = gugu - gigi; //variabel huhu adalah nilai dari SUM data nilai_omset dikurang SUM data jumlah_kembalian
+    let bbbb = huhu * 9.0909090909090909090909090901 / 100;
+    let hihi = huhu - bbbb;
+// END LABA BULAN INI
+
+
+// START UPAH 20%
+    let cca = Math.ceil((bbbb * 20) / 100);
+    let ccb = cca / 1000;
+    let ccc = Math.round(ccb)*1000;
+// END UPAH 20%
+</script>
 </header>
 <!-- End Navigation Bar=============================================================================-->
 
@@ -33,7 +53,7 @@
 
                                 <script>
                                     if (<?php foreach ($omset as $o) {echo $o;}?> != <?= date('Y-m-d'); ?>) {
-                                        if (<?= date("Hi"); ?> > 0126) {
+                                        if (<?= date("Hi"); ?> > 2144) {
                                             document.writeln( /*html*/ `
                                 <form action="<?= base_url('OmsetSatu/omset'); ?>" method="post">
                                     <div class="form-group row">
@@ -163,22 +183,58 @@
                     </div>
                     <div class="col-md-12 col-lg-12 col-xl-12">
                         <div class="card m-b-30">
-                            <h5 class="card-header mt-0"><i class="mdi mdi-format-line-spacing"></i> Laba Bulan ini</h5>
+                            <h5 class="card-header mt-0"><i class="mdi mdi-format-line-spacing"></i> Upah Kasir bulan ini</h5>
                             <div class="card-body text-center">
+                            <?php
+                            $qTot = "SELECT SUM(nilai_omset) FROM omset WHERE nama_penyetor='" . $user['name'] . "' AND bulan IN (DATE_FORMAT(NOW(), '%m%Y'))";
+                            $qKem = "SELECT SUM(jumlah_kembalian) FROM omset WHERE nama_penyetor='" . $user['name'] . "' AND bulan IN (DATE_FORMAT(NOW(), '%m%Y'))";
+                            $qStor = "SELECT COUNT(nama_penyetor) FROM omset WHERE nama_penyetor='" . $user['name'] . "' AND bulan IN (DATE_FORMAT(NOW(), '%m%Y'))";
+                            $tot = $this->db->query($qTot)->row_array();
+                            $kem = $this->db->query($qKem)->row_array();
+                            $stor = $this->db->query($qStor)->row_array();
+                            ?>
+                            <?php foreach ($tot as $tt) : ?>
+                            <?php foreach ($kem as $km) : ?>
+                            <?php foreach ($stor as $st) : ?>
+                            <?php
+                            if($st == 0){
+                                echo '<h5 class="card-title"> Tidak ada data : </h5><h3><strong>NIHIL</strong></h3>';
+                            } else {
+                                echo "Banyak Stor Bulan ini : " . $st . " kali";
+                                echo "<br>";
+                                echo "Total : " . number_format($tt, 0, '', ',');
+                                echo "<br>";
+                                $kkn = $km*250000;
+                                echo "kembalian : " . number_format($kkn, 0, '', ',');
+                                $hhs = $tt-$kkn;
+                                echo "<br>";
+                                echo "Hasil : " . number_format($hhs, 0, '', ',');
+                                echo "<br>";
+                                echo "laba kotor barang (90%) :";
+                                echo "<br>";
+                                $adb = ($hhs * 9.0909090909090901) / 100;
+                                echo number_format(round($hhs - $adb), 0, '', ',');
+                                echo "<br>";
+                                echo "laba bersih pendapatan (10%) :";
+                                echo "<br>";
+                                echo number_format(round($adb), 0, '', ',');
+                                echo "<br>";
+                                $hayuk = round(($adb * 20) / 100);
+                            }
+                            ?>
+                            <br>
+                            
+
                                 <script>
-                                    let gugu = <?php foreach ($getAll as $gg) {
-                                                    echo $gg;
-                                                } ?>;//variabel gugu adalah untuk mrnampilkan semua data nilai_omset bulan sekarang
-                                    let gigi = <?php foreach ($getAss as $ss) {
-                                                    echo $ss * 250000;
-                                                } ?>;//variabel gigi adalah untuk menampilkan semuada data jumlah_kembalian bulan sekarang
-                                    let huhu = gugu - gigi; //variabel huhu adalah nilai dari SUM data nilai_omset dikurang SUM data jumlah_kembalian
-                                    let bbbb = huhu * 9.0909090909090909090909090901 / 100;
-                                    let hihi = huhu - bbbb;
-                                    document.writeln('<h5 class="card-title">Laba Modal</h5><h3><strong>Rp ' + new Intl.NumberFormat().format(Math.round(hihi)) + '</strong></h3><br>');
-                                    document.writeln('<h5 class="card-title">Laba Bersih</h5><h3><strong>Rp ' + new Intl.NumberFormat().format(Math.round(bbbb)) + '</strong></h3>');
+                                let jujuk = <?=$hayuk;?> / 1000;
+                                let jujus = Math.round(jujuk);
+                                
+                                    document.writeln('<h5 class="card-title">Total upah 20% dibulatkan : </h5><h3><strong data-toggle="tooltip" data-placement="left" title="" data-original-title="'+ new Intl.NumberFormat().format(jujuk) +'">Rp ' + new Intl.NumberFormat().format(jujus*1000) + '</strong></h3>');
                                 </script>
                             </div>
+                            <?php endforeach;?>
+                            <?php endforeach;?>
+                            <?php endforeach;?>
                         </div>
                     </div>
                 </div>
