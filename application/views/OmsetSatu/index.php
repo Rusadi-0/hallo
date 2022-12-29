@@ -18,6 +18,14 @@
     let ccc = Math.round(ccb)*1000;
 // END UPAH 20%
 </script>
+<?php
+    $qTot = "SELECT SUM(nilai_omset) FROM omset WHERE nama_penyetor='" . $user['name'] . "' AND bulan IN (DATE_FORMAT(NOW(), '%m%Y'))";
+    $qKem = "SELECT SUM(jumlah_kembalian) FROM omset WHERE nama_penyetor='" . $user['name'] . "' AND bulan IN (DATE_FORMAT(NOW(), '%m%Y'))";
+    $qStor = "SELECT COUNT(nama_penyetor) FROM omset WHERE nama_penyetor='" . $user['name'] . "' AND bulan IN (DATE_FORMAT(NOW(), '%m%Y'))";
+    $tot = $this->db->query($qTot)->row_array();
+    $kem = $this->db->query($qKem)->row_array();
+    $stor = $this->db->query($qStor)->row_array();
+?>
 </header>
 <!-- End Navigation Bar=============================================================================-->
 
@@ -183,41 +191,26 @@
                     </div>
                     <div class="col-md-12 col-lg-12 col-xl-12">
                         <div class="card m-b-30">
-                            <h5 class="card-header mt-0"><i class="mdi mdi-format-line-spacing"></i> Upah Kasir bulan ini</h5>
+                            <h5 class="card-header mt-0"><i class="mdi mdi-format-line-spacing"></i> Hasil Kasir bulan ini</h5>
                             <div class="card-body text-center">
-                            <?php
-                            $qTot = "SELECT SUM(nilai_omset) FROM omset WHERE nama_penyetor='" . $user['name'] . "' AND bulan IN (DATE_FORMAT(NOW(), '%m%Y'))";
-                            $qKem = "SELECT SUM(jumlah_kembalian) FROM omset WHERE nama_penyetor='" . $user['name'] . "' AND bulan IN (DATE_FORMAT(NOW(), '%m%Y'))";
-                            $qStor = "SELECT COUNT(nama_penyetor) FROM omset WHERE nama_penyetor='" . $user['name'] . "' AND bulan IN (DATE_FORMAT(NOW(), '%m%Y'))";
-                            $tot = $this->db->query($qTot)->row_array();
-                            $kem = $this->db->query($qKem)->row_array();
-                            $stor = $this->db->query($qStor)->row_array();
-                            ?>
                             <?php foreach ($tot as $tt) : ?>
                             <?php foreach ($kem as $km) : ?>
                             <?php foreach ($stor as $st) : ?>
                             <?php
                             if($st == 0){
+                                echo "<br>";
+                                echo "<i style='font-size: 90px;' class='mdi mdi-paw-off'></i>";
                                 echo '<h5 class="card-title"> Tidak ada data : </h5><h3><strong>NIHIL</strong></h3>';
                             } else {
-                                echo "Banyak Stor Bulan ini : " . $st . " kali";
-                                echo "<br>";
-                                echo "Total : " . number_format($tt, 0, '', ',');
-                                echo "<br>";
                                 $kkn = $km*250000;
-                                echo "kembalian : " . number_format($kkn, 0, '', ',');
                                 $hhs = $tt-$kkn;
-                                echo "<br>";
-                                echo "Hasil : " . number_format($hhs, 0, '', ',');
-                                echo "<br>";
-                                echo "laba kotor barang (90%) :";
-                                echo "<br>";
                                 $adb = ($hhs * 9.0909090909090901) / 100;
-                                echo number_format(round($hhs - $adb), 0, '', ',');
-                                echo "<br>";
-                                echo "laba bersih pendapatan (10%) :";
-                                echo "<br>";
-                                echo number_format(round($adb), 0, '', ',');
+
+                                echo "<h5 class='card-title'>Jumlah Anda Stor Bulan ini : </h5>";
+                                echo "<h4><strong>" . $st . " kali</strong></h4>";
+                                // echo "<br>";
+                                // echo "<h5 class='card-title'>Total laba bersih anda peroleh : </h5>";
+                                // echo "<h4><strong>Rp " . number_format(round($adb), 0, '', ',') . "</strong></h4>";
                                 echo "<br>";
                                 $hayuk = round(($adb * 20) / 100);
                             }
@@ -229,7 +222,7 @@
                                 let jujuk = <?=$hayuk;?> / 1000;
                                 let jujus = Math.round(jujuk);
                                 
-                                    document.writeln('<h5 class="card-title">Total upah 20% dibulatkan : </h5><h3><strong data-toggle="tooltip" data-placement="left" title="" data-original-title="'+ new Intl.NumberFormat().format(jujuk) +'">Rp ' + new Intl.NumberFormat().format(jujus*1000) + '</strong></h3>');
+                                    document.writeln('<h5 class="card-title">Total upah anda 20% : </h5><h2><strong data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Rp '+ new Intl.NumberFormat().format(jujuk) +'">Rp ' + new Intl.NumberFormat().format(jujus*1000) + '</strong></h2>');
                                 </script>
                             </div>
                             <?php endforeach;?>
@@ -247,7 +240,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">tgl</th>
-                                    <th scope="col">Laba Bersih</th>
+                                    <th scope="col">20% per hari</th>
                                     <th scope="col">Opsi</th>
                                 </tr>
                             </thead>
@@ -263,13 +256,17 @@
                                     <?php $hasilOmset = ($om['nilai_omset'] - ($om['jumlah_kembalian'] * 250000)) - $hasilPersen; ?>
                                     <tr>
                                         <td scope="row"><?= strftime("%d", strtotime($om['tanggal_stor'])); ?></td>
-                                        <td><?php 
+                                        <td>
+                                        <?php 
                                         $hoss = $hasilPersen / 1000;
                                         $hosa = round($hoss);
                                         if ($hasilPersen < 0) {
                                                 echo 0;
                                             } else {
-                                                echo number_format(($hosa*1000), 0, '', ',');
+                                                echo "<h5>" . number_format((($hosa*1000)*20)/100, 0, '', ',');
+                                                if($om["nama_penyetor"] == $user['name']){
+                                                    echo ' <span class="badge badge-fill badge-default">u</i></span></h5>';
+                                                }
                                             }; ?>
                                         </td>  
                                         <td>

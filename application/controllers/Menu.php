@@ -41,7 +41,7 @@ class Menu extends CI_Controller
         $data['menu'] = $this->db->get_where('user_menu', ['id' => $id])->row_array();
         $data['submenu'] = $this->db->get_where('user_sub_menu')->row_array();
 
-        $this->load->view('menu/hapusMenu.php', $data);
+        // $this->load->view('menu/hapusMenu.php', $data);
         $this->db->delete('user_menu', ['id' => $id]);
         $this->db->delete('user_sub_menu', ['menu_id' => $id]);
         $this->session->set_flashdata('message', '<div class="alert fade show notifikasi alert-success" data-dismiss="alert" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="mdi mdi-close"></i></button>Menu dipilih berhasil <strong>Terhapus..!!</strong></div>');

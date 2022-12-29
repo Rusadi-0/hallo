@@ -75,7 +75,12 @@
                             <h5 class="card-header mt-0"><i class="mdi mdi-weather-rainy"></i> Upah Kasir 20% per bulan</h5>
                             <div class="card-body text-center">
                                 <script>
-                                    document.writeln('<h5 class="card-title">Total hasil dibulatkan : </h5><h3><strong data-toggle="tooltip" data-placement="left" title="" data-original-title="'+ new Intl.NumberFormat().format(cca) +'">Rp ' + new Intl.NumberFormat().format(ccc) + '</strong></h3>');
+                                    if(cca == 0){
+                                        document.writeln("<i style='font-size: 90px;' class='mdi mdi-paw-off'></i>");
+                                        document.writeln(`<h5 class="card-title"> Tidak ada data : </h5><h3><strong>NIHIL</strong></h3>`);
+                                    } else {
+                                        document.writeln('<h5 class="card-title">Total hasil dibulatkan : </h5><h3><strong data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Rp '+ new Intl.NumberFormat().format(cca) +'">Rp ' + new Intl.NumberFormat().format(ccc) + '</strong></h3>');
+                                    }
                                 </script>
                             </div>
                         </div>

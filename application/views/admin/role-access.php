@@ -44,7 +44,7 @@
                                         <td><?= $m['menu']; ?></td>
                                         <td>
                                             <div class="custom-control custom-checkbox">
-                                                <input class="form-check-input custom-control-input" id="customCheck<?= $m['id']; ?>" type="checkbox" <?= check_access($role['id'], $m['id']); ?> data-role="<?= $role['id']; ?>" data-menu="<?= $m['id']; ?>">
+                                                <input class="check-role form-check-input custom-control-input" id="customCheck<?= $m['id']; ?>" type="checkbox" <?= check_access($role['id'], $m['id']); ?> data-role="<?= $role['id']; ?>" data-menu="<?= $m['id']; ?>">
                                                 <label class="custom-control-label" for="customCheck<?= $m['id']; ?>"></label>
                                             </div>
                                         </td>
