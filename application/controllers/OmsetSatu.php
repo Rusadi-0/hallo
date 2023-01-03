@@ -54,7 +54,14 @@ class OmsetSatu extends CI_Controller
                 'tahun' => date('Y'),
                 'waktu_stor' => time()
             ];
+            $log = [
+                'user_log' => $this->input->post('nama_penyetor'),
+                'aktivitas_log' => "Menyetor",
+                'waktu_log' => date('Y-m-d'),
+                'ket_log' =>  "(1rbu: " . $this->input->post('1k') . " lbr), "."(2rbu: " . $this->input->post('2k') . " lbr), "."(5rbu: " . $this->input->post('5k') . " lbr), "."(10rbu: " . $this->input->post('10k') . " lbr), "."(20rbu: " . $this->input->post('20k') . " lbr), "."(50rbu: " . $this->input->post('50k') . " lbr), "."(100rbu: " . $this->input->post('100k') . " lbr), time: " . date("H:i:s")
+            ];
             $this->db->insert('omset', $data);
+            $this->db->insert('log', $log);
             $this->db->set('bulan', (date("m") + 1).date("Y"));
             $this->db->where('id', 1);
             $this->db->update('omset');

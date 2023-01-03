@@ -26,6 +26,7 @@
                 <div class="card m-b-30">
                     <div class="card-body">
                         <form action="<?= base_url('profile/changepassword'); ?>" method="post">
+                        <input type="hidden" name="user_log" value="<?= $user["name"]; ?>">
                             <div class="form-group">
                                 <label for="current_password">Password lama</label>
                                 <input type="password" class="form-control" id="current_password" name="current_password" autofocus>

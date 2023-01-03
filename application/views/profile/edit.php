@@ -21,6 +21,7 @@
         </div>
 
         <?= form_open_multipart('profile/edit'); ?>
+        <input type="hidden" name="user_log" value="<?= $user["name"]; ?>">
         <div class="row">
             <div class="col-md-6 col-lg-6 col-xl-6">
                 <div class="card mb-3">

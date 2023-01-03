@@ -11,6 +11,10 @@
     let hihi = huhu - bbbb;
 // END LABA BULAN INI
 
+// waktu menampilkann stor
+    // let waktuStors = 0000
+    let waktuStors = 2144;
+
 
 // START UPAH 20%
     let cca = Math.ceil((bbbb * 20) / 100);
@@ -61,7 +65,7 @@
 
                                 <script>
                                     if (<?php foreach ($omset as $o) {echo $o;}?> != <?= date('Y-m-d'); ?>) {
-                                        if (<?= date("Hi"); ?> > 2144) {
+                                        if (<?= date("Hi"); ?> > waktuStors) {
                                             document.writeln( /*html*/ `
                                 <form action="<?= base_url('OmsetSatu/omset'); ?>" method="post">
                                     <div class="form-group row">
@@ -240,7 +244,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">tgl</th>
-                                    <th scope="col">20% per hari</th>
+                                    <th scope="col">20%/hri</th>
                                     <th scope="col">Opsi</th>
                                 </tr>
                             </thead>
@@ -255,17 +259,28 @@
                                     <!--10%-->
                                     <?php $hasilOmset = ($om['nilai_omset'] - ($om['jumlah_kembalian'] * 250000)) - $hasilPersen; ?>
                                     <tr>
-                                        <td scope="row"><?= strftime("%d", strtotime($om['tanggal_stor'])); ?></td>
+                                        <td scope="row">
+                                        <?php 
+                                            if($om["nama_penyetor"] == $user['name']){
+                                                echo '<h5><span class="badge badge-pill badge-success">' . strftime("%d", strtotime($om['tanggal_stor'])) . "</span></h5>" ; 
+                                            } else {
+                                                echo '<h5><span class="badge badge-pill badge-default">' . strftime("%d", strtotime($om['tanggal_stor'])) . '</span></h5>'; 
+                                            }
+                                            
+                                        ?>
+                                        </td>
                                         <td>
                                         <?php 
-                                        $hoss = $hasilPersen / 1000;
+                                        $pood = ($hasilPersen * 20) / 100;
+                                        $hoss =  $pood/ 1000;
                                         $hosa = round($hoss);
                                         if ($hasilPersen < 0) {
                                                 echo 0;
                                             } else {
-                                                echo "<h5>" . number_format((($hosa*1000)*20)/100, 0, '', ',');
                                                 if($om["nama_penyetor"] == $user['name']){
-                                                    echo ' <span class="badge badge-fill badge-default">u</i></span></h5>';
+                                                    echo '<h5><span class="badge badge-pill badge-default">' . number_format(($hosa*1000), 0, '', ',') . '</span></h3>';
+                                                } else {
+                                                    echo '<h5><span class="badge badge-pill badge-default"><del>' . number_format($pood, 0, '', ',') . "</del></span></h5>";
                                                 }
                                             }; ?>
                                         </td>  

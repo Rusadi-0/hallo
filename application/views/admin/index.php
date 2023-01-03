@@ -19,6 +19,37 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-xl-12">
+                <div class="card m-b-30">
+                    <h6 class="card-header mt-0"><i class="mdi mdi-timer"></i> Riwayat Log</h6>
+                    <div class="card-body">
+                    <table id="myUse" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th>User</th>
+                                    <th>Aktivitas</th>
+                                    <th>Waktu</th>
+                                    <th>keterangan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php foreach ($log as $l) : ?>
+                                <tr>
+                                    <td><?= $l["id"];?></td>
+                                    <td><?= $l["user_log"];?></td>
+                                    <td><?= $l["aktivitas_log"];?></td>
+                                    <td><?= $l["waktu_log"];?></td>
+                                    <td><?= $l["ket_log"];?></td>
+                                </tr>
+                                <?php endforeach;?>
+                            </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 

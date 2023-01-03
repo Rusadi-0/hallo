@@ -44,9 +44,16 @@ class Profile extends CI_Controller
             $this->load->view('profile/edit', $data);
             $this->load->view('templates/footer');
         } else {
+            $log = [
+                'user_log' => $this->input->post('user_log'),
+                'aktivitas_log' => "Edit Profile",
+                'waktu_log' => date('Y-m-d'),
+                'ket_log' =>  "time: " . date("H:i:s")
+            ];
+            $this->db->insert('log', $log);
             $name = htmlspecialchars($this->input->post('name'));
             $email = htmlspecialchars($this->input->post('email'));
-
+            
             // cek jika ada gambar yang akan diupload
             $upload_image = $_FILES['image']['name'];
 
@@ -67,8 +74,7 @@ class Profile extends CI_Controller
                 } else {
                     echo $this->upload->dispay_errors();
                 }
-            }
-
+            }            
             $this->db->set('name', $name);
             $this->db->where('email', $email);
             $this->db->update('user');
@@ -108,12 +114,21 @@ class Profile extends CI_Controller
                     // password sudah ok
                     $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
 
+                    $log = [
+                        'user_log' => $this->input->post('user_log'),
+                        'aktivitas_log' => "Ganti Password",
+                        'waktu_log' => date('Y-m-d'),
+                        'ket_log' =>  "time: " . date("H:i:s")
+                    ];
+                    $this->db->insert('log', $log);
                     $this->db->set('password', $password_hash);
                     $this->db->where('email', $this->session->userdata('email'));
                     $this->db->update('user');
+                    
 
                     $this->session->set_flashdata('message', '<div class="alert fade show notifikasi alert-success" data-dismiss="alert" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="mdi mdi-close"></i></button>Password berhasil <strong>Terganti..!!</strong></div>');
                     redirect('profile');
+
                 }
             }
         }

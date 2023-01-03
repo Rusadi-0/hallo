@@ -9,7 +9,7 @@
                     <!--Annex-->
                     <!--</a>-->
                     <!-- Image Logo -->
-                    <a href="<?= base_url('dashboard'); ?>" class="logo">
+                    <a href="javascript:window.location.href=window.location.href" class="logo">
                         <img src="<?= base_url('assets/'); ?>images/logo-sm.png" alt="" height="22" class="logo-small">
                         <img src="<?= base_url('assets/'); ?>images/SIMAS.png" alt="" height="16" class="logo-large">
                     </a>
