@@ -226,7 +226,14 @@
                                 let jujuk = <?=$hayuk;?> / 1000;
                                 let jujus = Math.round(jujuk);
                                 
-                                    document.writeln('<h5 class="card-title">Total upah anda 20% : </h5><h2><strong data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Rp '+ new Intl.NumberFormat().format(jujuk) +'">Rp ' + new Intl.NumberFormat().format(jujus*1000) + '</strong></h2>');
+                                    document.<?php
+    $qTot = "SELECT SUM(nilai_omset) FROM omset WHERE nama_penyetor='" . $user['name'] . "' AND bulan IN (DATE_FORMAT(NOW(), '%m%Y'))";
+    $qKem = "SELECT SUM(jumlah_kembalian) FROM omset WHERE nama_penyetor='" . $user['name'] . "' AND bulan IN (DATE_FORMAT(NOW(), '%m%Y'))";
+    $qStor = "SELECT COUNT(nama_penyetor) FROM omset WHERE nama_penyetor='" . $user['name'] . "' AND bulan IN (DATE_FORMAT(NOW(), '%m%Y'))";
+    $tot = $this->db->query($qTot)->row_array();
+    $kem = $this->db->query($qKem)->row_array();
+    $stor = $this->db->query($qStor)->row_array();
+?>('<h5 class="card-title">Total upah anda 20% : </h5><h2><strong data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Rp '+ new Intl.NumberFormat().format(jujuk) +'">Rp ' + new Intl.NumberFormat().format(jujus*1000) + '</strong></h2>');
                                 </script>
                             </div>
                             <?php endforeach;?>

@@ -85,10 +85,43 @@ class Campas extends CI_Controller
      $data['title'] = 'Tagihan';
      $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
       $data['campas'] = $this->db->get('campas')->result_array();
-     $this->load->view('templates/header', $data);
-     $this->load->view('templates/topbar', $data);
-     $this->load->view('templates/sidebar', $data);
-     $this->load->view('campas/tagihan', $data);
-     $this->load->view('templates/footer');
+      $data['tagihan'] = $this->db->get('tagihan')->result_array();
+
+      $this->load->model('Omset_model', 'omset');
+
+      $data['omset'] = $this->omset->getData('omset');
+      $data['omsetBulan'] = $this->omset->getBulan('omset');
+      $data['getAkhir'] = $this->omset->getDataAkhir('omset');
+      $data['getAll'] = $this->omset->getAll('omset');
+      $data['getAss'] = $this->omset->getAss('omset');
+
+      $this->form_validation->set_rules('dari_tagihan', 'dari_tagihan', 'required');
+     $this->form_validation->set_rules('total_tagihan', 'total_tagihan', 'required');
+     $this->form_validation->set_rules('tanggal_tagihan', 'tanggal_tagihan', 'required');
+
+     if ($this->form_validation->run() == false) {
+          $this->load->view('templates/header', $data);
+          $this->load->view('templates/topbar', $data);
+          $this->load->view('templates/sidebar', $data);
+          $this->load->view('campas/tagihan', $data);
+          $this->load->view('templates/footer');
+          } else {
+               $data = [
+                    'dari_tagihan' => htmlspecialchars($this->input->post('dari_tagihan')),
+                    'total_tagihan' => htmlspecialchars($this->input->post('total_tagihan')),
+                    'tanggal_tagihan' => htmlspecialchars($this->input->post('tanggal_tagihan')),
+                    'bulan' => htmlspecialchars($this->input->post('bulan'))
+
+               ];
+               $this->db->insert('tagihan', $data);
+               $this->session->set_flashdata('message', '<div class="alert fade show notifikasi alert-success" data-dismiss="alert" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="mdi mdi-close"></i></button>Data berhasil <strong> Tertambah..!!</strong></div>');
+               redirect('campas/tagihan');
+          }
+     }
+     public function deleteTagihan($id)
+     {
+           $this->db->delete('tagihan', ['id' => $id]);
+           $this->session->set_flashdata('message', '<div class="alert fade show notifikasi alert-success" data-dismiss="alert" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="mdi mdi-close"></i></button>Data dipilih berhasil <strong>Terhapus..!!</strong></div>');
+           redirect('campas/tagihan');
      }
 }
