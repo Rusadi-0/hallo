@@ -170,20 +170,27 @@
                                                             <div class="row">
                                                                 <div class="col-md-6 mr-auto"><strong>Laba Modal (90%)</strong></div>
                                                                 <div class="col-md-6 mr-auto">:
+                                                                <?php 
+                                                                       $putten = round($hasilOmset / 1000);
+                                                                    ;?>
                                                                     <?php if ($hasilOmset < 0) : ?>
                                                                         Rp. 0
                                                                     <?php else : ?>
-                                                                        <?= "Rp. " . number_format($hasilOmset, 0, '', ','); ?>
+                                                                        <?= "Rp. " . number_format(($putten*1000), 0, '', ','); ?>
+                                                                        <small>( <?= $putten*1000;?> )</small>
                                                                     <?php endif; ?>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-6 mr-auto"><strong>Laba Bersih (10%)</strong></div>
                                                                 <div class="col-md-6 mr-auto">:
+                                                                <?php
+                                                                        $puttem = round($hasilPersen / 1000);
+                                                                    ;?>
                                                                     <?php if ($hasilOmset < 0) : ?>
                                                                         Rp. 0
                                                                     <?php else : ?>
-                                                                        <?= "Rp. " . number_format($hasilPersen, 0, '', ','); ?>
+                                                                        <?= "Rp. " . number_format(($puttem*1000), 0, '', ','); ?>
                                                                     <?php endif; ?>
                                                                 </div>
                                                             </div>
@@ -341,40 +348,40 @@ new Chartist.Bar('#stacked-bar-chart', {
   series: [
     [<?php foreach ($jan as $b1) {
                                 $oo1 = (($b1 - $t1) * $persen / 100);
-                                echo round($oo1);
+                                echo (round($oo1/1000)*1000);
                                 } ?>,<?php foreach ($feb as $b2) {
                                 $oo2 = (($b2 - $t2) * $persen / 100);
-                                echo round($oo2);
+                                echo (round($oo2/1000)*1000);
                             } ?>,<?php foreach ($mar as $b3) {
                                 $oo3 = (($b3 - $t3) * $persen / 100);
-                                echo round($oo3);
+                                echo (round($oo3/1000)*1000);
                             } ?>,<?php foreach ($apr as $b4) {
                                 $oo4 = (($b4 - $t4) * $persen / 100);
-                                echo round($oo4);
+                                echo (round($oo4/1000)*1000);
                             } ?>,<?php foreach ($mei as $b5) {
                                 $oo5 = (($b5 - $t5) * $persen / 100);
-                                echo round($oo5);
+                                echo (round($oo5/1000)*1000);
                             } ?>,<?php foreach ($jun as $b6) {
                                 $oo6 = (($b6 - $t6) * $persen / 100);
-                                echo round($oo6);
+                                echo (round($oo6/1000)*1000);
                             } ?>,<?php foreach ($jul as $b7) {
                                 $oo7 = (($b7 - $t7) * $persen / 100);
-                                echo round($oo7);
+                                echo (round($oo7/1000)*1000);
                             } ?>,<?php foreach ($agus as $b8) {
                                 $oo8 = (($b8 - $t8) * $persen / 100);
-                                echo round($oo8);
+                                echo (round($oo8/1000)*1000);
                             } ?>,<?php foreach ($sep as $b9) {
                                 $oo9 = (($b9 - $t9) * $persen / 100);
-                                echo round($oo9);
+                                echo (round($oo9/1000)*1000);
                             } ?>,<?php foreach ($okt as $b10) {
                                 $oo10 = (($b10 - $t10) * $persen / 100);
-                                echo round($oo10);
+                                echo (round($oo10/1000)*1000);
                             } ?>,<?php foreach ($nop as $b11) {
                                 $oo11 = (($b11 - $t11) * $persen / 100);
-                                echo round($oo11);
+                                echo (round($oo11/1000)*1000);
                             } ?>,<?php foreach ($des as $b12) {
                                 $oo12 = (($b12 - $t12) * $persen / 100);
-                                echo round($oo12);
+                                echo (round($oo12/1000)*1000);
                             } ?>]
   ],
   

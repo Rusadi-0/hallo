@@ -307,7 +307,7 @@
                                                                 <div class="col-md-6 mr-auto"><strong>Laba Pendapatan</strong></div>
                                                                 <div class="col-md-6 mr-auto">: <?= "Rp. " . number_format($om['nilai_omset'], 0, '', ','); ?></div>
                                                             </div>
-                                                            <div class="row">
+                                                            <!-- <div class="row">
                                                                 <div class="col-md-6 mr-auto"><strong>Kembalian Digunakan</strong></div>
                                                                 <div class="col-md-6 mr-auto">:
 
@@ -319,27 +319,33 @@
                                                                         ?>
                                                                     <?php endif; ?>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row">
+                                                            </div> -->
+                                                            <!-- <div class="row">
                                                                 <div class="col-md-6 mr-auto"><strong>Laba Modal (90%)</strong></div>
                                                                 <div class="col-md-6 mr-auto">:
+                                                                    <?php 
+                                                                       $putten = round($hasilOmset / 1000);
+                                                                    ;?>
                                                                     <?php if ($hasilOmset < 0) : ?>
                                                                         Rp. 0
                                                                     <?php else : ?>
-                                                                        <?= "Rp. " . number_format($hasilOmset, 0, '', ','); ?>
+                                                                        <?= "Rp. " . number_format(($putten*1000), 0, '', ','); ?>
                                                                     <?php endif; ?>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row">
+                                                            </div> -->
+                                                            <!-- <div class="row">
                                                                 <div class="col-md-6 mr-auto"><strong>Laba Bersih (10%)</strong></div>
                                                                 <div class="col-md-6 mr-auto">:
+                                                                    <?php
+                                                                        $puttem = round($hasilPersen / 1000);
+                                                                    ;?>
                                                                     <?php if ($hasilOmset < 0) : ?>
                                                                         Rp. 0
                                                                     <?php else : ?>
-                                                                        <?= "Rp. " . number_format($hasilPersen, 0, '', ','); ?>
+                                                                        <?= "Rp. " . number_format(($puttem*1000), 0, '', ','); ?>
                                                                     <?php endif; ?>
                                                                 </div>
-                                                            </div>
+                                                            </div> -->
                                                             <div class="row">
                                                                 <div class="col-md-6 mr-auto"><strong>Nama Penyetor</strong></div>
                                                                 <div class="col-md-6 mr-auto">: <?= $om["nama_penyetor"]; ?></div>
