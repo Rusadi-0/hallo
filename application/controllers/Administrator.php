@@ -16,6 +16,7 @@ class Administrator extends CI_Controller
         $data['title'] = 'Dashboard';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
+        $data['log'] = $this->db->get('log')->result_array();
         $data['role'] = $this->db->get('user_role')->result_array();
         $data['user_sub_menu'] = $this->db->get_where('user_sub_menu')->row_array();
 

@@ -44,7 +44,7 @@ date_default_timezone_set("Asia/Kuala_Lumpur");
     <script src="<?= base_url('assets/'); ?>js/dataTables.fixedHeader.js"></script>
     <script src="<?= base_url('assets/'); ?>js/dataTables.responsive.js"></script>
     <script src="<?= base_url('assets/'); ?>js/responsive.bootstrap4.js"></script>
-    <script src="<?= base_url('assets/'); ?>js/tanggalSekarang.js"></script>
+    <!-- <script src="<?= base_url('assets/'); ?>js/tanggalSekarang.js"></script> -->
 
 
     

@@ -38,7 +38,17 @@ class Omset_model extends CI_Model
     }
     public function anggaran()
     {
-        $query = "SELECT SUM(total_tagihan) FROM tagihan WHERE bulan IN (DATE_FORMAT(NOW(), '%m%Y')) AND NOT id='1'";
+        $query = "SELECT SUM(total_tagihan) FROM tagihan";
+        return $this->db->query($query)->row_array();
+    }
+    public function sumLabaAll()
+    {
+        $query = "SELECT SUM(nilai_omset) FROM omset";
+        return $this->db->query($query)->row_array();
+    }
+    public function sumKembalianAll()
+    {
+        $query = "SELECT SUM(jumlah_kembalian) FROM omset";
         return $this->db->query($query)->row_array();
     }
 

@@ -21,7 +21,8 @@
 
 <script>
     if(<?=$user['role_id'];?> == <?=209;?>){
-      window.location.href = "https://tknoor.000webhostapp.com/admin/OmsetSatu";
+      window.location.href = "<?= base_url('OmsetSatu'); ?>";
+    //   window.location.href = "https://tknoor.000webhostapp.com/admin/OmsetSatu";
     }
 </script>
 

@@ -39,6 +39,7 @@
                                                   </button>
                                              </div>
                                              <form action="<?= base_url('campas/index'); ?>" method="POST">
+                                             <input type="hidden" name="user" value="<?=$user["name"];?>">
                                                   <div class="modal-body">
                                                        <div class="form-group row">
                                                             <label for="namaCampas" class="col-sm-3 col-form-label">Nama</label>
