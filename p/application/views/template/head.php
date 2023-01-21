@@ -33,7 +33,7 @@
 				font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 			}
 			body{
-				background-color: #DDFEE8;
+				background-color: #F5F7F3;
 				/* background: radial-gradient(circle at top left, #d6ffe3,#e1feeb); */
 				/* background: radial-gradient(circle at top left, #DEFCF9,#CADEFC,#C3BEF0, #CCA8E9); */
 				/* background-size: cover; */
@@ -41,9 +41,9 @@
 				/* height: 100vh; */
 			}
 			#gogg{
-				background-color: #7de07d;
-				border-radius: 5px;
-				background: rgba(104, 216, 104, 0.3);
+				background-color: #B2AFBE;
+				border-radius: 2px;
+				/* background: rgba(31, 160, 219, 0.3);  */
 			}
 			.btn_block{
 				width: 100%;

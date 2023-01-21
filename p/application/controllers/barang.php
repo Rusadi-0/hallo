@@ -39,7 +39,7 @@ class Barang extends CI_Controller {
             'id' => strtoupper(htmlspecialchars($this->input->post('id'))),
             'nama' => strtoupper(htmlspecialchars($this->input->post('nama'))),
             'harga_beli' => strtoupper(htmlspecialchars($this->input->post('harga_beli'))),
-            'harga_jual' => $this->input->post('harga_beli') + ($this->input->post('harga_beli')*10/100),
+            'harga_jual' => $this->input->post('harga_beli')/((100-10)/100),
             'stok' => strtoupper(htmlspecialchars($this->input->post('stok')))
         ];
         
