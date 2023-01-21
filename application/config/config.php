@@ -24,8 +24,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |
 */
 // $config['base_url'] = 'https://tknoor.000webhostapp.com/admin/';
-$config['base_url'] = 'http://localhost';
-// $config['base_url'] = 'http://192.168.1.63';
+// $config['base_url'] = 'http://localhost';
+$config['base_url'] = 'http://192.168.1.62';
 
 /*
 |--------------------------------------------------------------------------

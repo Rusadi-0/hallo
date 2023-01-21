@@ -86,16 +86,7 @@ class Myigniter extends CI_Controller {
 		$condition['id'] = $id;
 		$get = $this->myigniter_model->getData($table, $condition);
 		$jml = $get->num_rows();
-
-		foreach ($get->result() as $row) {
-			$data = array(
-				'id'      => $row->id,
-				'qty'     => 1,
-				'price'   => $row->harga_jual,
-				'name'    => $row->nama
-			);
-			$this->cart->insert($data);
-		}
+		$tambah = TRUE;
 
 		foreach ($this->cart->contents() as $items){
 			$kode = $id;
@@ -107,11 +98,31 @@ class Myigniter extends CI_Controller {
 				);
 
 				$this->cart->update($data);
+				$tambah = FALSE;
 				break;
 			  }
 		}
 
-
+		if($tambah){
+	        if($jml == 0){
+	        	/*
+	        	echo "<script>
+	        	alert('Id barang yang dimasukan tidak ada!');
+	        	</script>";
+	        	*/
+	        }else{
+	        	foreach ($get->result() as $row) {
+					$data = array(
+						'id'      => $row->id,
+						'qty'     => 1,
+						'price'   => $row->harga_jual,
+						'name'    => $row->nama
+					);
+					$this->cart->insert($data);
+					break;
+				}
+			}
+		}
 	}
 
 	public function client()

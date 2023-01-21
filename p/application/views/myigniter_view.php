@@ -161,7 +161,7 @@ function konfirmasi()
 		$("#tombol").removeClass('disabled');
 	  });
      //  $('#form').submit();
-    }, 1000);// <-- untuk mengukur waktu scan, perhitungannya mengunakan milisecond
+    }, 1);// <-- untuk mengukur waktu scan, perhitungannya mengunakan milisecond
 }
 
 function hapusSemua()
